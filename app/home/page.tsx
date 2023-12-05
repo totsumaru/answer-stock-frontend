@@ -4,10 +4,11 @@ import Post from "@/components/Post";
 export default function Page() {
   return (
     <Sidebar title={"Home"} children={
-      <div className="gap-2 flex flex-col">
+      <div className="py-10 px-3 gap-2 flex flex-col">
         <Post
           id={"1"}
           author={{
+            id: "totsumaru",
             name: "John Doe",
             avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           }}
@@ -18,6 +19,7 @@ export default function Page() {
         <Post
           id={"2"}
           author={{
+            id: "totsumaru",
             name: "John Doe",
             avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           }}

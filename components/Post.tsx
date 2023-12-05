@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChatBubbleOvalLeftIcon, HeartIcon } from '@heroicons/react/24/outline';
+import Link from "next/link";
 
 // 仮の返信数といいね数
 const replyCount = 10; // 例えば、これはpropsから取得したり、状態管理から取得したりすることができます
@@ -8,6 +9,7 @@ const likeCount = 5; // 同上
 type Props = {
   id: string;
   author: {
+    id: string
     name: string;
     avatarUrl: string;
   };
@@ -25,15 +27,21 @@ export default function Post(props: Props) {
   return (
     <div className="bg-white px-4 py-5 sm:px-6 rounded-md shadow md:max-w-lg mx-auto">
       <div className="flex space-x-3">
-        <div className="flex-shrink-0">
-          <img
-            className="h-10 w-10 rounded-full"
-            src={props.author.avatarUrl}
-            alt={`${props.author.name}'s avatar`}
-          />
-        </div>
+        <Link href={`/user/${props.author.id}`}>
+          <div className="flex-shrink-0">
+            <img
+              className="h-10 w-10 rounded-full"
+              src={props.author.avatarUrl}
+              alt={`${props.author.name}'s avatar`}
+            />
+          </div>
+        </Link>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-gray-900">{props.author.name}</p>
+          <Link href={`/user/${props.author.id}`}>
+            <p className="text-sm font-semibold text-gray-900">
+              {props.author.name}
+            </p>
+          </Link>
           <p className="text-xs text-gray-500">
             <time dateTime={new Date(props.createdAt).toISOString()}>
               {new Date(props.createdAt).toLocaleDateString()} at {new Date(props.createdAt).toLocaleTimeString()}

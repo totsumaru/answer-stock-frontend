@@ -176,8 +176,8 @@ export default function Sidebar({ title, children }: Props) {
           </div>
         </div>
 
-        <main className="py-10 bg-gray-100 min-h-screen lg:grid lg:grid-cols-4 lg:gap-4">
-          <div className="px-4 sm:px-6 lg:px-8 lg:col-span-3">
+        <main className="bg-gray-100 min-h-screen lg:grid lg:grid-cols-4">
+          <div className="lg:col-span-3">
             {/* 左側のカラムの内容 */}
             {children}
           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ChatBubbleOvalLeftIcon, HeartIcon } from '@heroicons/react/24/outline';
+import { ChatBubbleOvalLeftIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
+import LikeButton from "@/components/LikeButton";
 
 // 仮の返信数といいね数
 const replyCount = 10; // 例えば、これはpropsから取得したり、状態管理から取得したりすることができます
@@ -25,7 +26,8 @@ export default function Post(props: Props) {
     : 'flex flex-col';
 
   return (
-    <div className="bg-white px-4 py-5 sm:px-6 rounded-md shadow md:max-w-lg">
+    <div className="bg-white px-4 py-5 sm:px-6 w-full rounded-md shadow md:max-w-lg">
+      {/* プロフィール */}
       <div className="flex space-x-3">
         <Link href={`/user/${props.author.id}`}>
           <div className="flex-shrink-0">
@@ -50,13 +52,15 @@ export default function Post(props: Props) {
         </div>
       </div>
 
+      {/* 内容 */}
       <Link href={`/post/${props.id}`}
-            className="block p-5 mt-4 text-sm text-gray-700 w-full bg-yellow-50 rounded-md"
+            className="block p-5 mt-4 text-sm text-gray-700 w-full shadow rounded-md"
             style={{ whiteSpace: 'pre-wrap' }}
       >
         {props.content}
       </Link>
 
+      {/* 画像 */}
       <div className={`${imagesGridClass} mt-4`}>
         {props.imageUrls.map((imageUrl, index) => (
           <img
@@ -68,16 +72,16 @@ export default function Post(props: Props) {
         ))}
       </div>
 
-      {/* アイコンを表示する部分 */}
+      {/* 返信,いいねアイコン */}
       <div className="flex items-center mt-4">
-        <div className="flex items-center">
-          <ChatBubbleOvalLeftIcon className="h-4 w-4 text-gray-400 hover:text-gray-700 cursor-pointer"/>
-          <span className="text-sm ml-2 text-gray-500">{replyCount}</span>
-        </div>
-        <div className="flex items-center ml-5">
-          <HeartIcon className="h-4 w-4 text-gray-500 hover:text-gray-700 cursor-pointer"/>
-          <span className="text-sm ml-2 text-gray-500">{likeCount}</span>
-        </div>
+        {/* 返信 */}
+        <Link href={`/post/${props.id}`} className="flex items-center text-green-500 font-bold hover:text-green-600">
+          <ChatBubbleOvalLeftIcon className="h-4 w-4 font-bold cursor-pointer"/>
+          <span className="text-sm ml-2">{replyCount}</span>
+        </Link>
+
+        {/* いいね */}
+        <LikeButton likeCount={likeCount}/>
       </div>
 
     </div>

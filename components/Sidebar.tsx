@@ -15,7 +15,7 @@ const navigation = [
   { name: 'Home', href: '/home', icon: HomeIcon, current: true },
 ]
 const userNavigation: any[] = [
-  { name: '(開発中)', href: '#' },
+  { name: '---', href: '#' },
 ]
 
 // サイドバーです

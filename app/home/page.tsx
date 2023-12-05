@@ -23,7 +23,7 @@ export default function Page() {
           avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
         }}
         content={`Hello World\nHello World`}
-        imageUrls={["/img.png", "/img.png", "/img.png"]}
+        imageUrls={[]}
         createdAt={"2021-03-01T12:34:56.789Z"}
       />
     </div>

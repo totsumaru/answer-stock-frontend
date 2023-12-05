@@ -8,7 +8,7 @@ export default async function Page({
   params: { postId: string }
 }) {
   const children = (
-    <div className="px-5 flex flex-col items-center mt-5">
+    <div className="px-5 flex flex-col items-center my-5">
       <Post
         id={"1"}
         author={{
@@ -20,24 +20,26 @@ export default async function Page({
         imageUrls={["/img.png"]}
         createdAt={"2021-03-01T12:34:56.789Z"}
       />
-      <div className="mt-2 gap-2">
+
+      <div className="w-full lg:max-w-lg my-5">
         <h2 className="text-lg font-bold">返信</h2>
-        <Post
-          id={"1"}
-          author={{
-            id: "totsumaru",
-            name: "John Doe",
-            avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          }}
-          content={`Hello World\nHello World`}
-          imageUrls={[]}
-          createdAt={"2021-03-01T12:34:56.789Z"}
-        />
       </div>
+
+      <Post
+        id={"1"}
+        author={{
+          id: "totsumaru",
+          name: "John Doe",
+          avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+        }}
+        content={`Hello World\nHello World`}
+        imageUrls={[]}
+        createdAt={"2021-03-01T12:34:56.789Z"}
+      />
     </div>
   )
 
   return (
-    <Sidebar title={"Totsumaru"} children={children}/>
+    <Sidebar title={"投稿"} children={children}/>
   )
 }

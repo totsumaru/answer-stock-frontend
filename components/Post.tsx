@@ -25,7 +25,7 @@ export default function Post(props: Props) {
     : 'flex flex-col';
 
   return (
-    <div className="bg-white px-4 py-5 sm:px-6 rounded-md shadow md:max-w-lg mx-auto">
+    <div className="bg-white px-4 py-5 sm:px-6 rounded-md shadow md:max-w-lg">
       <div className="flex space-x-3">
         <Link href={`/user/${props.author.id}`}>
           <div className="flex-shrink-0">
@@ -49,16 +49,21 @@ export default function Post(props: Props) {
           </p>
         </div>
       </div>
-      <p className="mt-4 text-sm text-gray-700" style={{ whiteSpace: 'pre-wrap' }}>
+
+      <Link href={`/post/${props.id}`}
+            className="block p-5 mt-4 text-sm text-gray-700 w-full bg-yellow-50 rounded-md"
+            style={{ whiteSpace: 'pre-wrap' }}
+      >
         {props.content}
-      </p>
+      </Link>
+
       <div className={`${imagesGridClass} mt-4`}>
         {props.imageUrls.map((imageUrl, index) => (
           <img
             key={index}
             src={imageUrl}
             alt={`Content image ${index + 1}`}
-            className={props.imageUrls.length > 1 ? 'w-full h-32 object-cover rounded-md' : 'w-full rounded-md cursor-pointer'}
+            className={props.imageUrls.length > 1 ? 'w-full h-32 object-cover rounded-md' : 'w-full rounded-md'}
           />
         ))}
       </div>
@@ -74,7 +79,6 @@ export default function Post(props: Props) {
           <span className="text-sm ml-2 text-gray-500">{likeCount}</span>
         </div>
       </div>
-
 
     </div>
   );

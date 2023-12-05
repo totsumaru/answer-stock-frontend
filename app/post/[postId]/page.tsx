@@ -1,17 +1,27 @@
 import Sidebar from "@/components/Sidebar";
 import React from "react";
-import Profile from "@/components/Profile";
 import Post from "@/components/Post";
 
 export default async function Page({
-  params: { userId }
+  params: { postId }
 }: {
-  params: { userId: string }
+  params: { postId: string }
 }) {
   const children = (
-    <>
-      <Profile/>
-      <div className="py-5 px-3 gap-2 flex flex-col items-center">
+    <div className="px-5 flex flex-col items-center mt-5">
+      <Post
+        id={"1"}
+        author={{
+          id: "totsumaru",
+          name: "John Doe",
+          avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+        }}
+        content={`Hello World\nHello World`}
+        imageUrls={["/img.png"]}
+        createdAt={"2021-03-01T12:34:56.789Z"}
+      />
+      <div className="mt-2 gap-2">
+        <h2 className="text-lg font-bold">返信</h2>
         <Post
           id={"1"}
           author={{
@@ -20,11 +30,11 @@ export default async function Page({
             avatarUrl: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           }}
           content={`Hello World\nHello World`}
-          imageUrls={["/img.png"]}
+          imageUrls={[]}
           createdAt={"2021-03-01T12:34:56.789Z"}
         />
       </div>
-    </>
+    </div>
   )
 
   return (

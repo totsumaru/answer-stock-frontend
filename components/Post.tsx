@@ -41,7 +41,7 @@ export default function Post(props: Props) {
           </p>
         </div>
       </div>
-      <p className="mt-4 text-gray-700" style={{ whiteSpace: 'pre-wrap' }}>
+      <p className="mt-4 text-sm text-gray-700" style={{ whiteSpace: 'pre-wrap' }}>
         {props.content}
       </p>
       <div className={`${imagesGridClass} mt-4`}>
